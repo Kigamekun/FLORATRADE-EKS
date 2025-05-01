@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notification Template</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body style="margin: 0;">
+    <style>
+        @media screen and (max-width: 600px) {
+            .title {
+                font-size: 26px;
+            }
+
+            p {
+                font-size: 14px;
+            }
+
+            .footerPlantsasri {
+                font-size: 12px;
+            }
+        }
+
+    </style>
+
+    <div class="container" style="height: 100%; width: 100%;">
+        <div class="wrapperContainer" style="margin: auto; width: 100%; max-width: 800px;">
+            <div class="wrapperHead" style="background-color: #2DB878; padding: 3rem; border-radius: 10px 10px 0 0; ">
+                <table style="width: 100%;">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <div class="icon" style="background-color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; padding: 1rem; width: max-content;">
+                                    <img style="width: 100%; max-width: 52px;" src="https://i.ibb.co/0jcG7Sv/document-2-1.png" alt="">
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <center>
+                    <h1 class="title"
+                        style="color: #fff; font-family: 'Poppins', sans-serif; margin: 0; margin-bottom: .7rem;">Your
+                        Request</h1>
+                </center>
+                <center>
+                    <p class="date" style="color: #fff; font-family: 'Poppins', sans-serif;">
+                        {{ Carbon\Carbon::now()->toDateString() }}</p>
+                </center>
+            </div>
+
+
+            @php
+                $status = [];
+                $status[0] = 'Menunggu Approval';
+                $status[1] = 'Approved';
+                $status[2] = 'Verifikasi Teknis';
+                $status[3] = 'Persetujuan Dirjen';
+                $status[4] = 'Permohonan Diterima Menunggu Pembayaran';
+
+                $status[5] = 'Pembayaran Diterima';
+                $status[6] = 'Proses Karantina';
+                $status[7] = 'Pengiriman';
+                $status[8] = 'Selesai';
+
+            @endphp
+
+            <div class="wrapperBody" style="background: #fff; padding: 2rem 3rem; border-radius: 0 0 10px 10px;">
+                <div class="text" style="text-align: center; font-family: 'Poppins', sans-serif;">
+                    <p style="margin: 0; margin-bottom:.5rem;">Hi <span class="name"
+                            style="font-weight: 600;">{{ $data->nama_penerima }},</span></p>
+                    <p style="margin: 0;">Your Request, <span class="numberRequest"
+                            style="color: #2DB878; font-weight: 600;">{{ $data->pengajuan_id }},</span></p>
+                    <p style="margin: 0;">We are currently in {{ $status[$data->status] }}, please wait a moment.</p>
+                </div>
+
+                <table style="width: 100%; padding: 1rem 0;">
+                    <tbody>
+                        <tr>
+                            <td align="center">
+                                <a href="https://Plantsasri.co.id/" style="font-family: 'Poppins', sans-serif; background: #2DB878; padding: .8rem 2rem; border-radius: 6px; text-decoration: none; color: #fff;">View More</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p class="footerPlantsasri" style="text-align: center; font-family: 'Poppins', sans-serif;">Thanks for
+                    choosing Plantsasri.com
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>
