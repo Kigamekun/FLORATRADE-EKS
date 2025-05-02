@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plantsasri - Dashboard</title>
+    <title>FloraTrade</title>
 
     <!--Bootstrap Assets-->
     <link rel="stylesheet" href="{{ url('assets/vendor/bootstrap/css/bootstrap.min.css') }}">
@@ -16,6 +16,7 @@
     <!--CSS Component For Layouting-->
     <link rel="stylesheet" href="{{ url('assets/css/app.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/preloader.css') }}">
+    <link rel="stylesheet" href="{{ url('css/logo.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!--Styling Custom admin blade-->
@@ -44,26 +45,25 @@
     <div id="app">
         <div id="sidebarMain">
             <div class="wrapperSidebar">
-                <div class="brandLogo">
-                    <img src="{{ url('assets/img/PlantsasriLogo.png') }}" alt="">
+                <div class="logoAtas">
+                    <img src="{{ url('assets/img/realize.png') }}" alt="">
                 </div>
-                <a href="{{ route('profile') }}" class="profile">
-                    <div class="imagesProfile">
-                        <img src="{{ url('assets/img/faces.jpg') }}" alt="">
-                    </div>
-                    <div class="profileUser">
-                        <h5 class="labelDay">Morning</h5>
-                        <h5 class="nameUser">{{ Auth::user()->name }}</h5>
-                    </div>
-                </a>
                 @yield('menu')
             </div>
         </div>
         <div id="main">
             <div class="headMain">
+                <div class="topProfile d-flex align-items-center gap-2 px-3 py-2">
+                    <img src="{{ url('assets/img/faces.jpg') }}" alt="Foto Profil"
+                        style="width: 36px; height: 36px; border-radius: 50%; object-fit: cover;">
+                    <div class="profileUser" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        <div style="font-size: 0.75rem; color: #666;">Morning</div>
+                        <div style="font-weight: 500;">{{ Auth::user()->name }}</div>
+                    </div>
+                </div>
                 <div class="brand-section">
                     <div class="iconBrand">
-                        <img src="{{ url('assets/img/PlantsasriLogo.png') }}" alt="">
+                        <img src="{{ url('assets/img/floratrade_logo.png') }}" alt="">
                     </div>
                     <div class="sidebarButton">
                         <img src="{{ url('assets/img/menuButton.svg') }}" alt="" class="menuButton">

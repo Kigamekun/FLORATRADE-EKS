@@ -1,0 +1,13 @@
+.logoAtas {
+  padding: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+}
+
+.logoAtas img {
+  max-height: 90px;
+  width: auto;
+  object-fit: contain;
+}
