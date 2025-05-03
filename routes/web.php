@@ -33,8 +33,22 @@ Route::get('/', function () {
 });
 
 Route::get('/landingpage', function () {
-    return view('landingpage');
-})->name('landingpage');
+    try {
+        $lang = $_GET['lang'];
+        if ($lang == 'eng') {
+            return view('landingpage-eng');
+        }
+        else {
+            return view('landingpage');
+        }
+    } catch (\Throwable $th) {
+        return view('landingpage');
+    }
+});
+
+Route::get('/landingpage-eng', function () {
+    return view('landingpage-eng');
+});
 
 Route::get('/dashboard', function () {
 

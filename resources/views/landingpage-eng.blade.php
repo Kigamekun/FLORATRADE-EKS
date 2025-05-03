@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FloraTrade - Platform Ekspor-Impor untuk Tanaman Hias</title>
+    <title>FloraTrade - Export-Import Platform for Ornamental Plants</title>
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
     <script>
         tailwind.config = {
@@ -73,10 +73,10 @@
                 </a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
-                <a href="#about" class="text-gray-600 hover:text-primary transition-colors">Tentang</a>
-                <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Layanan</a>
+                <a href="#about" class="text-gray-600 hover:text-primary transition-colors">About</a>
+                <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Services</a>
                 <a href="#" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
-                <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
             </nav>
             <div class="flex items-center space-x-4">
             @if (is_null(Auth::user()))
@@ -104,15 +104,15 @@
             <div class="flex flex-col md:flex-row items-center">
                 <div class="w-full md:w-1/2 py-16 md:py-0">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                        Biarkan Bisnis Tanaman Hias Anda <span class="text-primary">Flourish</span>
+                        Let Your Ornamental Plant Business <span class="text-primary">Flourish</span>
                     </h1>
                     <p class="text-lg text-gray-700 mb-8 max-w-lg">
-                    Terhubung dengan pasar global dan ekspor tanaman indah Anda ke seluruh dunia dengan layanan manajemen ekspor kami yang lengkap, andal, dan efisien.
+                        Connect with global markets and export your beautiful plants worldwide with our complete, reliable, and efficient export management services.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-4">
                         <button class="bg-primary text-white px-8 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors text-lg whitespace-nowrap"
                             onclick="window.location.href='{{ route('login') }}'">
-                            Mulai Ekspor Hari Ini
+                            Start Exporting Today
                         </button>
                         {{-- <button class="border border-primary text-primary px-8 py-3 !rounded-button font-medium hover:bg-primary/5 transition-colors text-lg whitespace-nowrap">
                             Learn More
@@ -137,13 +137,14 @@
                 </div>
                 <div class="w-full md:w-1/2">
                     <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-6 relative">
-                        Tentang FloraTrade
+                        About FloraTrade
                         <span class="absolute bottom-0 left-0 w-20 h-1 bg-primary"></span>
                     </h2>
                     <p class="text-gray-700 mb-6">
-                        FloraTrade adalah platform digital utama yang mengkhususkan diri dalam ekspor-impor tanaman hias dari Indonesia. Kami menjembatani kesenjangan antara petani lokal dan pasar global, menyediakan solusi ekspor yang komprehensif.                    </p>
+                        FloraTrade is a premier digital platform specializing in the export-import of ornamental plants from Indonesia. We bridge the gap between local growers and the global market, providing comprehensive export solutions.
+                    </p>
                     <p class="text-gray-700 mb-6">
-                    Misi kami adalah membantu bisnis tanaman hias Indonesia berkembang di dunia internasional dengan menyederhanakan proses ekspor, mengelola dokumentasi, dan menghubungkan mereka dengan pembeli di seluruh dunia.
+                        Our mission is to help Indonesian ornamental plant businesses flourish internationally by simplifying the export process, managing documentation, and connecting them with buyers worldwide.
                     </p>
                     <div class="grid grid-cols-2 gap-6 mt-8">
                         <div class="flex items-start">
@@ -151,8 +152,8 @@
                                 <i class="ri-global-line ri-lg text-primary"></i>
                             </div>
                             <div>
-                                <h4 class="text-lg font-semibold text-gray-900 mb-1">Jangkauan Global</h4>
-                                <p class="text-gray-600">Akses ke pasar internasional di lebih dari 230 negara</p>
+                                <h4 class="text-lg font-semibold text-gray-900 mb-1">Global Reach</h4>
+                                <p class="text-gray-600">Access to international markets across 230+ countries</p>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -161,9 +162,9 @@
                         </div>
                         <div>
                             <h4 class="text-lg font-semibold text-gray-900 mb-1">
-                                Jaringan yang Berkembang
+                                Growing Network
                             </h4>
-                            <p class="text-gray-600">50+ Pengusaha Tanaman Hias Terafiliasi</p>
+                            <p class="text-gray-600">50+ Active Plant Entrepreneurs</p>
                         </div>
                     </div>
                     </div>
@@ -176,9 +177,9 @@
     <section class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Bagaimana Kami Bekerja</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">How We Work</h2>
                 <p class="text-gray-700 max-w-2xl mx-auto">
-                Layanan komprehensif kami dirancang untuk membuat ekspor tanaman hias menjadi sederhana, efisien, dan menguntungkan bagi bisnis Anda.
+                    Our comprehensive services are designed to make exporting ornamental plants simple, efficient, and profitable for your business.
                 </p>
             </div>
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -187,12 +188,12 @@
                     <div class="w-16 h-16 flex items-center justify-center bg-secondary rounded-full mb-6">
                         <i class="ri-global-line ri-2x text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Ekspor ke Dunia yang Penuh Peluang</h3>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Export to a World of Opportunities</h3>
                     <p class="text-gray-700 mb-6">
-                    Terhubung dengan pembeli terverifikasi dari seluruh dunia dan kembangkan bisnis tanaman hias Anda hingga ke luar negeri.
+                        Connect with verified buyers from around the globe and expand your ornamental plant business beyond borders.
                     </p>
                     <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
-                        Pelajari selengkapnya
+                        Learn more
                         <i class="ri-arrow-right-line ri-sm ml-1"></i>
                     </a>
                 </div>
@@ -206,7 +207,7 @@
                         We handle all the complex paperwork, permits, and compliance requirements to ensure your plants reach their destination without delays.
                     </p>
                     <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
-                        Pelajari selengkapnya
+                        Learn more
                         <i class="ri-arrow-right-line ri-sm ml-1"></i>
                     </a>
                 </div>
@@ -220,7 +221,7 @@
                         Our dedicated team provides personalized assistance throughout the export process, ensuring your business needs are met.
                     </p>
                     <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
-                        Pelajari selengkapnya
+                        Learn more
                         <i class="ri-arrow-right-line ri-sm ml-1"></i>
                     </a>
                 </div>
