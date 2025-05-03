@@ -533,5 +533,53 @@
                     },
                 ]
             ];
-            let currentSetIndex = 0;
-            let currentIndex = 0;   
+            function createTestimonialCard(testimonial) {
+          return `
+      <div class="bg-white p-8 rounded-lg border border-gray-100 shadow-sm opacity-0 transition-opacity duration-500">
+      <div class="flex items-center mb-4">
+      <div class="text-primary">
+      <i class="ri-star-fill ri-lg"></i>
+      <i class="ri-star-fill ri-lg"></i>
+      <i class="ri-star-fill ri-lg"></i>
+      <i class="ri-star-fill ri-lg"></i>
+      <i class="ri-star-fill ri-lg"></i>
+      </div>
+      </div>
+      <p class="text-gray-700 mb-6 italic">${testimonial.text}</p>
+      <div class="flex items-center">
+      <div class="w-12 h-12 rounded-full bg-gray-200 overflow-hidden mr-4">
+      <img src="${testimonial.image}" alt="${testimonial.name}" class="w-full h-full object-cover object-top">
+      </div>
+      <div>
+      <h4 class="text-gray-900 font-semibold">${testimonial.name}</h4>
+      <p class="text-gray-600 text-sm">${testimonial.role}</p>
+      </div>
+      </div>
+      </div>
+      `;
+        }
+        function updateTestimonials(setIndex) {
+          testimonialSlides.style.opacity = "0";
+          setTimeout(() => {
+            testimonialSlides.innerHTML = testimonialSets[setIndex]
+              .map((testimonial) => createTestimonialCard(testimonial))
+              .join("");
+            setTimeout(() => {
+              const cards = testimonialSlides.querySelectorAll(".bg-white");
+              cards.forEach((card) => (card.style.opacity = "1"));
+            }, 50);
+          }, 500);
+          dots.forEach((dot, index) => {
+            dot.className =
+              index === setIndex
+                ? "w-3 h-3 rounded-full bg-primary"
+                : "w-3 h-3 rounded-full bg-gray-300 hover:bg-primary/50 transition-colors";
+          });
+        }
+        dots.forEach((dot, index) => {
+          dot.addEventListener("click", () => updateTestimonials(index));
+        });
+      });
+    </script>
+  </body>
+</html>
