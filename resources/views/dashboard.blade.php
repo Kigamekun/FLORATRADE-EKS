@@ -26,13 +26,13 @@
                 <div class="icon">
                     <ion-icon name="repeat"></ion-icon>
                 </div>
-                <a href="{{ route('seePengajuan') }}" class="sidebar-menu">Request</a>
+                <a href="{{ route('seePengajuan') }}" class="sidebar-menu">Manage Request</a>
             </li>
             <li class="list-menu">
                 <div class="icon">
                     <ion-icon name="documents"></ion-icon>
                 </div>
-                <a href="" class="sidebar-menu">Document</a>
+                <a href="" class="sidebar-menu">Manage Document</a>
             </li>
             <li class="list-menu ">
                 <div class="icon">
@@ -44,20 +44,20 @@
                 <div class="icon">
                     <ion-icon name="airplane"></ion-icon>
                 </div>
-                <a href="{{ route('countryLicense') }}" class="sidebar-menu">Country License</a>
+                <a href="{{ route('countryLicense') }}" class="sidebar-menu"> Manage Country License</a>
             </li>
             <li class="list-menu">
                 <div class="icon">
                     <ion-icon name="rose"></ion-icon>
                 </div>
-                <a href="{{ route('listPlants') }}" class="sidebar-menu">List Plants</a>
+                <a href="{{ route('listPlants') }}" class="sidebar-menu">Manage Plants</a>
             </li>
 
             <li class="list-menu">
                 <div class="icon">
                     <ion-icon name="checkmark-done-outline"></ion-icon>
                 </div>
-                <a href="{{ route('listRealisation') }}" class="sidebar-menu">Realisation</a>
+                <a href="{{ route('listRealisation') }}" class="sidebar-menu">Manage Realisation</a>
             </li>
 
 
@@ -65,7 +65,7 @@
                 <div class="icon">
                     <ion-icon name="wallet"></ion-icon>
                 </div>
-                <a href="{{ route('listPricing') }}" class="sidebar-menu">Pricing Management</a>
+                <a href="{{ route('listPricing') }}" class="sidebar-menu">Manage Pricing</a>
             </li>
             <li class="listMenuName">
                 <p>User Menu</p>
@@ -80,13 +80,13 @@
                 <div class="icon">
                     <ion-icon name="repeat"></ion-icon>
                 </div>
-                <a href="{{ route('historyPengajuan') }}" class="sidebar-menu">Request User</a>
+                <a href="{{ route('historyPengajuan') }}" class="sidebar-menu">Manage Request User</a>
             </li>
             <li class="list-menu">
                 <div class="icon">
                     <ion-icon name="documents"></ion-icon>
                 </div>
-                <a href="{{ route('seeReport') }}" class="sidebar-menu">Report</a>
+                <a href="{{ route('seeReport') }}" class="sidebar-menu">Manage Report User</a>
             </li>
 
         </div>

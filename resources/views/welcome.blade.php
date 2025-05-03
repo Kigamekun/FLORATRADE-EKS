@@ -5,10 +5,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Plantsasri Indonesia is one of the leading exporters of agricultural products, especially ornamental plants in Indonesia. We are an OEM whitelabel manufacturing company, our company has been established for more than 3 years in the agricultural industry.">
-    <meta name="keywords" content="Plantsasri, plants, indonesia farmer, bisa ekspor, cara ekpsor, plants indonesia, seller plants indonesia, buy plants from indonesia, supplier plants indonesia">
-    <meta name="author" content="Plantsasri Indonesia">
-    <title>Plantsasri - Ornamentals Plants Leading Exporters</title>
+    <meta name="description" content="FloraTrade Indonesia is one of the leading exporters of agricultural products, especially ornamental plants in Indonesia. We are an OEM whitelabel manufacturing company, our company has been established for more than 3 years in the agricultural industry.">
+    <meta name="keywords" content="FloraTrade, plants, indonesia farmer, bisa ekspor, cara ekpsor, plants indonesia, seller plants indonesia, buy plants from indonesia, supplier plants indonesia">
+    <meta name="author" content="FloraTrade Indonesia">
+    <title>FloraTrade - Ornamentals Plants Leading Exporters</title>
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="{{ url('favicon.ico') }}">
     <!--Bootstrap Assets-->
@@ -46,6 +46,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <a class="navbar-brand" href="#">
                     {{-- <img src="{{ url('assets/img/PlantsasriLogo.png') }}" alt=""> --}}
+                    <img src="{{ url('assets/img/LogoFloraTrade.png') }}" alt="Logo FloraTrade" >
+
                 </a>
 
                 <button class="navbar-toggler" type="button">

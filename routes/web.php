@@ -32,6 +32,10 @@ Route::get('/', function () {
     }
 });
 
+Route::get('/landingpage', function () {
+    return view('landingpage');
+})->name('landingpage');
+
 Route::get('/dashboard', function () {
 
     $data = Pengajuan::where('user_id',Auth::id())->get();
