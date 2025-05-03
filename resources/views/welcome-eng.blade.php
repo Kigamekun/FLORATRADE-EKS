@@ -47,6 +47,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
                 <a class="navbar-brand" href="#">
                     {{-- <img src="{{ url('assets/img/PlantsasriLogo.png') }}" alt=""> --}}
+                    <img src="{{ url('assets/img/LogoFloraTrade.png') }}" alt="Logo Floratrade">
                 </a>
 
                 <button class="navbar-toggler" type="button">
