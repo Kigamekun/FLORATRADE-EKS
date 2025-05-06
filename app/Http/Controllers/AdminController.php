@@ -122,7 +122,7 @@ class AdminController extends Controller
     }
 
 
-    public function addNoResi(Request $request)
+    public function addNoResi(Request $request,$id)
     {
         Pengajuan::where('id',$id)->update([
             'no_resi'=>$request->no_resi

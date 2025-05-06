@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Mail;
 use App\Models\Tanaman;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Hash;
 
 
 class UserController extends Controller
@@ -63,7 +64,7 @@ class UserController extends Controller
 
         }
 
-        // Mail::to(env('MAIL_ADMIN'))->send(new PengajuanMail($data));
+        Mail::to(env('MAIL_ADMIN'))->send(new PengajuanMail($data));
 
         DB::table('notifications')->insert([
             'title'=>'New Request Has Been Created',
@@ -87,7 +88,7 @@ class UserController extends Controller
     }
 
 
-    public function requestTanamanPost(Request $request)
+    public function requestTanamanPost(Request $request,$id)
     {
         if ($request->hasFile('gambar')) {
             $file = $request->file('gambar');
@@ -251,7 +252,7 @@ class UserController extends Controller
     }
 
 
-    public function trackingPengajuan(Request $request)
+    public function trackingPengajuan(Request $request,$id)
     {
 
 
