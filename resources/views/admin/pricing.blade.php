@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ url('assets/css/country-license.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/table.css') }}">
 @endsection
 
 
