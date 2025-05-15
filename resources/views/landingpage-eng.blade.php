@@ -10,8 +10,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2E7D32',
-                        secondary: '#E8F5E9'
+                        primary: '#2cb876',
+                        secondary: '#E8F5E9',
+                        gray: '#464b4f'
                     },
                     borderRadius: {
                         'none': '0px',
@@ -80,7 +81,7 @@
             </nav>
             <div class="flex items-center space-x-4">
             @if (is_null(Auth::user()))
-                <a href="{{ route('login') }}" class="text-primary font-medium hover:text-primary/80 transition-colors whitespace-nowrap">Login</a>
+                <a href="{{ route('login') }}" class="text-primary font-medium hover:text-primary/80 transition-colors whitespace-nowrap border border-primary rounded px-4 py-2">Login</a>
                 <a href="{{ route('register') }}" class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
             @else
                 <a href="

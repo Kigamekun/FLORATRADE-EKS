@@ -10,8 +10,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2E7D32',
-                        secondary: '#E8F5E9'
+                        primary: '#2cb876',
+                        secondary: '#E8F5E9',
+                        gray: '#464b4f'
                     },
                     borderRadius: {
                         'none': '0px',
@@ -33,7 +34,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <!--Styling LandingPage-->
+    <!-- <link rel="stylesheet" href="{{ url('assets/css/landingpage.css') }}"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    
     <style>
         :where([class^="ri-"])::before { content: "\f3c2"; }
         body {
@@ -52,11 +57,56 @@
         }
         .hero-section {
             background-image: url('https://readdy.ai/api/search-image?query=A%20serene%20and%20vibrant%20tropical%20garden%20scene%20with%20lush%20ornamental%20plants%20and%20exotic%20flowers.%20The%20left%20side%20of%20the%20image%20has%20a%20clean%2C%20gradient%20fade%20to%20white%20to%20allow%20text%20overlay.%20The%20right%20side%20showcases%20beautiful%20tropical%20foliage%2C%20philodendrons%2C%20monstera%20plants%2C%20and%20colorful%20flowering%20orchids.%20Natural%20morning%20light%20creates%20a%20fresh%2C%20inspiring%20atmosphere.%20Professional%20photography%20with%20shallow%20depth%20of%20field.&width=1200&height=800&seq=12345&orientation=landscape');
-            background-size: contain;
             background-position: right top;
+            background-size: cover;
+            background-position: center;
             background-repeat: no-repeat;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 0;
+        }
+        @media (max-width: 768px) {
+        .hero-section {
+        background-position: center;
+        background-size: cover;
+        }
+        }
+        @media (min-width: 769px) {
+        .hero-section {
+        background-size: contain;
+        }
             
         }
+        /* Navbar Links */
+        nav a {
+            display: block;
+            padding: 0.5rem 0;
+            color: #464b4f;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.2s ease-in-out;
+        }
+
+        nav a:hover {
+            color: #2cb876;
+        }
+
+        /* Mobile Navigation */
+        #mobileNav {
+            display: none; /* Hidden by default */
+            flex-direction: column;
+            gap: 1rem;
+            background-color: white;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            z-index: 59;
+        }
+        
+        
+
     </style>
 </head>
 <body class="bg-white">
@@ -65,46 +115,53 @@
     </div>
     <!-- Header -->
     <header class="w-full bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-4 py-4 flex items-center justify-between">
-            {{--<a href="#" class="text-primary text-3xl font-['Pacifico']">FloraTrade</a>
-            <a class="navbar-brand" href="#"> --}}
-                    <img src="{{ url('assets/img/LogoFloraTrade.png') }}" alt="Logo FloraTrade" >
+        <div id="home" class="container mx-auto px-4 py-4 flex items-center justify-between">
+            <!-- Logo -->
+            <a href="#" class="navbar-brand">
+                <img src="{{ url('assets/img/LogoFloraTrade.png') }}" alt="Logo FloraTrade" class="h-10">
+            </a>
 
-                </a>
+            <!-- Desktop Navigation -->
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#home" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
                 <a href="#about" class="text-gray-600 hover:text-primary transition-colors">Tentang</a>
                 <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Layanan</a>
-                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
+                <a href="#marketplace" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
                 <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
             </nav>
+
+            <!-- User Authentication Links -->
             <div class="flex items-center space-x-4">
-            @if (is_null(Auth::user()))
-                <a href="{{ route('login') }}" class="text-primary font-medium hover:text-primary/80 transition-colors whitespace-nowrap">Login</a>
-                <a href="{{ route('register') }}" class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
-            @else
-                <a href="
-                @if (Auth::user()->role == 0)
-                    {{ '/admin' }}
+                @if (is_null(Auth::user()))
+                    <a href="{{ route('login') }}" class="text-primary font-medium hover:text-primary/80 transition-colors whitespace-nowrap border border-primary rounded px-4 py-2">Login</a>
+                    <a href="{{ route('register') }}" class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Sign Up</a>
                 @else
-                    {{ route('dashboard') }}
+                    <a href="
+                    @if (Auth::user()->role == 0)
+                        {{ '/admin' }}
+                    @else
+                        {{ route('dashboard') }}
+                    @endif
+                    " class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Dashboard</a>
                 @endif
-                " class="bg-primary text-white px-4 py-2 rounded-button font-medium hover:bg-primary/90 transition-colors whitespace-nowrap">Dashboard</a>
-            @endif
-            <button class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
+            </div>
+
+            <!-- Hamburger Menu Button -->
+            <button id="menuButton" class="md:hidden w-10 h-10 flex items-center justify-center text-gray-700">
                 <i class="ri-menu-line ri-lg"></i>
             </button>
         </div>
-        </div>
+
+        
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section min-h-[700px] pt-24 flex items-center">
+    <section class="hero-section min-h-[700px] pt-24 flex items-center bg-right-top bg-cover md:bg-contain bg-no-repeat">
         <div class="container mx-auto px-4 w-full">
             <div class="flex flex-col md:flex-row items-center">
-                <div class="w-full md:w-1/2 py-16 md:py-0">
+                <div class="w-full md:w-3/5 py-16 md:py-0 bg-gradient-to-r from-white via-white/95 to-transparent backdrop-blur-[2px]">
                     <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold text-gray-900 leading-tight mb-6">
-                        Biarkan Bisnis Tanaman Hias Anda <span class="text-primary">Flourish</span>
+                    Bawa Bisnis Tanaman Hiasmu Tumbuh dan <span class="text-primary">Dunia!</span>
                     </h1>
                     <p class="text-lg text-gray-700 mb-8 max-w-lg">
                     Terhubung dengan pasar global dan ekspor tanaman indah Anda ke seluruh dunia dengan layanan manajemen ekspor kami yang lengkap, andal, dan efisien.
@@ -119,7 +176,7 @@
                         </button> --}}
                     </div>
                 </div>
-                <div class="w-full md:w-1/2">
+                <div class="w-full md:w-2/5">
                     <!-- Hero image is in the background -->
                 </div>
             </div>
@@ -127,7 +184,7 @@
     </section>
 
     <!-- About Section -->
-    <section class="py-20 bg-white">
+    <section class="py-20 bg-white" id="about">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center gap-12">
                 <div class="w-full md:w-1/2">
@@ -173,7 +230,7 @@
     </section>
 
     <!-- Services Section -->
-    <section class="py-20 bg-gray-50">
+    <section id="services" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Bagaimana Kami Bekerja</h2>
@@ -201,9 +258,9 @@
                     <div class="w-16 h-16 flex items-center justify-center bg-secondary rounded-full mb-6">
                         <i class="ri-file-list-3-line ri-2x text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Smooth Export Documentation</h3>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Dokumentasi Ekspor yang lancar</h3>
                     <p class="text-gray-700 mb-6">
-                        We handle all the complex paperwork, permits, and compliance requirements to ensure your plants reach their destination without delays.
+                        Kami menangani semua dokumen, izin, dan persyaratan kepatuhan yang rumit untuk memastikan pabrik Anda mencapai tujuan tanpa penundaan.
                     </p>
                     <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
                         Pelajari selengkapnya
@@ -215,9 +272,9 @@
                     <div class="w-16 h-16 flex items-center justify-center bg-secondary rounded-full mb-6">
                         <i class="ri-customer-service-2-line ri-2x text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Premium Support</h3>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-4">Dukungan Premium</h3>
                     <p class="text-gray-700 mb-6">
-                        Our dedicated team provides personalized assistance throughout the export process, ensuring your business needs are met.
+                        Tim kami yang berdedikasi memberikan bantuan yang dipersonalisasi selama proses ekspor, memastikan kebutuhan bisnis Anda terpenuhi.
                     </p>
                     <a href="#" class="inline-flex items-center text-primary font-medium hover:underline">
                         Pelajari selengkapnya
@@ -232,9 +289,9 @@
     <section class="py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Apa Kata Klien Kami</h2>
                 <p class="text-gray-700 max-w-2xl mx-auto">
-                    Hear from businesses that have successfully expanded their ornamental plant exports with FloraTrade.
+                    Dengarkan cerita dari para pebisnis yang telah berhasil mengembangkan ekspor tanaman hias mereka dengan FloraTrade.
                 </p>
             </div>
             <div id="testimonialSlides" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -322,7 +379,7 @@
     </section>
 
     <!-- Contact Section -->
-    <section class="py-20 bg-gray-50">
+    <section class="py-20 bg-gray-50" id="contact">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
@@ -393,7 +450,7 @@
                     </div> --}}
                     <div id="wrapperMaps">
                         <div id="maps">
-                            <iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.686099579077!2d106.76789555057734!3d-6.561249565942787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b9933fc50d%3A0x155679cea3b523ae!2sCV.%20Planterindo%20Asri!5e0!3m2!1sid!2sid!4v1643991203516!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                            <iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3962.951156945661!2d106.77035217567887!3d-6.6529764933417574!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69cf0a4fe681cd%3A0xc02e01bae04617a4!2sReksa%20Farm!5e0!3m2!1sid!2sid!4v1746527283118!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                         </div>
                     </div>
                 </div>
@@ -402,9 +459,9 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-primary text-white pt-16 pb-8">
+    <footer class="bg-gray text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
                 <!-- Company Info -->
                 <div>
                     <h4 class="text-xl font-semibold mb-6">FloraTrade</h4>
@@ -448,7 +505,7 @@
                     </ul>
                 </div>
                 <!-- Newsletter -->
-                <div>
+                {{--  <div>
                     <h4 class="text-xl font-semibold mb-6">Newsletter</h4>
                     <p class="text-white/80 mb-4">
                         Subscribe to our newsletter for the latest updates on export opportunities.
@@ -459,7 +516,7 @@
                             Subscribe
                         </button>
                     </form>
-                </div>
+                </div>--}}
             </div>
             <div class="pt-8 border-t border-white/20 text-center">
                 <p class="text-white/70">
@@ -471,6 +528,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
+        
         // Mobile menu toggle
         const menuButton = document.querySelector(".ri-menu-line").parentElement;
         const nav = document.querySelector("nav");
@@ -486,6 +544,10 @@
           nav.classList.toggle("p-4");
           nav.classList.toggle("shadow-md");
         });
+
+        
+
+
         // Testimonial slider functionality
         const testimonialSlides = document.getElementById("testimonialSlides");
         const dots = [

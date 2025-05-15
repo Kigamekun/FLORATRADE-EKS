@@ -6,6 +6,8 @@
 
     <!--Styling Index-->
     <link rel="stylesheet" href="../assets/css/request-user.css">
+    <link rel="stylesheet" href="{{ url('assets/css/table.css') }}">
+    
 @endsection
 
 
