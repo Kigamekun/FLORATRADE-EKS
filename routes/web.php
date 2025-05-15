@@ -22,20 +22,6 @@ Route::get('/', function () {
     try {
         $lang = $_GET['lang'];
         if ($lang == 'eng') {
-            return view('welcome-eng');
-        }
-        else {
-            return view('welcome');
-        }
-    } catch (\Throwable $th) {
-        return view('welcome-eng');
-    }
-});
-
-Route::get('/landingpage', function () {
-    try {
-        $lang = $_GET['lang'];
-        if ($lang == 'eng') {
             return view('landingpage-eng');
         }
         else {
@@ -43,6 +29,20 @@ Route::get('/landingpage', function () {
         }
     } catch (\Throwable $th) {
         return view('landingpage');
+    }
+});
+
+Route::get('/landingpage', function () {
+    try {
+        $lang = $_GET['lang'];
+        if ($lang == 'eng') {
+            return view('welcome-eng');
+        }
+        else {
+            return view('welcome');
+        }
+    } catch (\Throwable $th) {
+        return view('welcome-eng');
     }
 });
 

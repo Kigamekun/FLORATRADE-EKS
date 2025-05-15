@@ -115,7 +115,7 @@
     </div>
     <!-- Header -->
     <header class="w-full bg-white shadow-sm fixed top-0 left-0 right-0 z-50">
-        <div id="home" class="container mx-auto px-4 py-4 flex items-center justify-between">
+        <div  class="container mx-auto px-4 py-4 flex items-center justify-between">
             <!-- Logo -->
             <a href="#" class="navbar-brand">
                 <img src="{{ url('assets/img/LogoFloraTrade.png') }}" alt="Logo FloraTrade" class="h-10">
@@ -156,7 +156,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero-section min-h-[700px] pt-24 flex items-center bg-right-top bg-cover md:bg-contain bg-no-repeat">
+    <section id="home" class="hero-section min-h-[700px] pt-24 flex items-center bg-right-top bg-cover md:bg-contain bg-no-repeat">
         <div class="container mx-auto px-4 w-full">
             <div class="flex flex-col md:flex-row items-center">
                 <div class="w-full md:w-3/5 py-16 md:py-0 bg-gradient-to-r from-white via-white/95 to-transparent backdrop-blur-[2px]">
@@ -382,33 +382,33 @@
     <section class="py-20 bg-gray-50" id="contact">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Get in Touch</h2>
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Hubungi kami</h2>
                 <p class="text-gray-700 max-w-2xl mx-auto">
-                    Have questions about exporting your ornamental plants? Contact us today and our team will help you get started.
+                    Ada pertanyaan tentang mengekspor tanaman hias Anda? Hubungi kami hari ini dan tim kami akan membantu Anda memulai.
                 </p>
             </div>
             <div class="flex flex-col lg:flex-row gap-12">
                 <div class="w-full lg:w-1/2 bg-white p-8 rounded-lg shadow-sm">
-                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Send Us a Message</h3>
+                    <h3 class="text-2xl font-semibold text-gray-900 mb-6">Kirim Pesan Kepada Kami</h3>
                     <form>
                         <div class="mb-6">
-                            <label for="name" class="block text-gray-700 mb-2">Full Name</label>
-                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Enter your full name">
+                            <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                            <input type="text" id="name" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Masukkan nama lengkap Anda">
                         </div>
                         <div class="mb-6">
-                            <label for="phone" class="block text-gray-700 mb-2">Phone Number</label>
-                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Enter your phone number">
+                            <label for="phone" class="block text-gray-700 mb-2">Nomor Telefon</label>
+                            <input type="tel" id="phone" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Masukkan nomor telefon Anda">
                         </div>
                         <div class="mb-6">
-                            <label for="email" class="block text-gray-700 mb-2">Email Address</label>
-                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Enter your email address">
+                            <label for="email" class="block text-gray-700 mb-2">Alamat Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Masukkan alamat email Anda">
                         </div>
                         <div class="mb-6">
-                            <label for="message" class="block text-gray-700 mb-2">Message</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="How can we help you?"></textarea>
+                            <label for="message" class="block text-gray-700 mb-2">Pesan</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-3 border border-gray-300 rounded focus:border-primary" placeholder="Bagaimana kami bisa membantu Anda?"></textarea>
                         </div>
                         <button type="submit" class="bg-primary text-white px-6 py-3 !rounded-button font-medium hover:bg-primary/90 transition-colors w-full md:w-auto whitespace-nowrap">
-                            Send Message
+                            Kirim Pesan
                         </button>
                     </form>
                 </div>
@@ -487,11 +487,11 @@
                 <div>
                     <h4 class="text-xl font-semibold mb-6">Quick Links</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Home</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">About Us</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Services</a></li>
+                        <li><a href="#home" class="text-white/80 hover:text-white transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-white/80 hover:text-white transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-white/80 hover:text-white transition-colors">Services</a></li>
                         <li><a href="#" class="text-white/80 hover:text-white transition-colors">Marketplace</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="#contact" class="text-white/80 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
                 <!-- Services -->
