@@ -3,6 +3,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ url('assets/css/dashboard-user.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/table.css') }}">
 @endsection
 
 
