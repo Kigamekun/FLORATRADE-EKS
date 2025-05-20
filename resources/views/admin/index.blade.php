@@ -2,6 +2,7 @@
 
 @section('css')
     <link rel="stylesheet" href="{{ url('assets/css/index.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/table.css') }}">
 @endsection
 @section('menu')
     <div class="sidebar-menu-wrapper">
