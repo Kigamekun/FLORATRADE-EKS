@@ -93,10 +93,7 @@
 
         </div>
     @endsection
-
 @else
-
-
     @section('menu')
         <div class="sidebar-menu-wrapper">
             <li class="list-menu ">
@@ -133,7 +130,6 @@
         .dropify-wrapper .dropify-message p {
             font-size: 14px;
         }
-
     </style>
 
     <div class="contentMain">
@@ -190,7 +186,6 @@
                                             <div class="status status-warning">Menunggu Approve</div>
                                         @elseif ($pengajuan->status < 0)
                                             <div class="status status-danger">Pengajuan Ditolak</div>
-
                                         @elseif ($pengajuan->status >= 1 && $pengajuan->status <= 3)
                                             <div class="status status-warning">Progress ({{ $pengajuan->status }})</div>
                                         @elseif ($pengajuan->status == 4)
@@ -203,8 +198,6 @@
                                             <div class="status status-info">Progress ({{ $pengajuan->status }})</div>
                                         @elseif ($pengajuan->status == 8)
                                             <div class="status status-success">Selesai</div>
-
-
                                         @endif
                                     </td>
 
@@ -229,12 +222,9 @@
                                                     <a class="btn btn-primary me-2">{{ $pengajuan->airplane }} -
                                                         {{ $pengajuan->no_resi }}</a>
                                                 @endif
-
                                             @else
                                                 <a target="_blank" class="btn btn-danger me-2">Belum Terkirim</a>
                                             @endif
-
-
                                         @else
                                             <a target="_blank" class="btn btn-danger me-2">Belum Terkirim</a>
                                         @endif
@@ -247,7 +237,6 @@
                                         @if ($pengajuan->file_resi != '')
                                             <a href="{{ route('downloadPhyto', ['id' => $pengajuan->id]) }}"
                                                 class="btn btn-primary me-2">Download File</a>
-
                                         @else
                                             <button class="btn btn-danger me-2">Belum Tersedia</button>
                                         @endif
@@ -263,10 +252,7 @@
                                         @if ($pengajuan->status == 4)
                                             <button class="btn btn-primary" id="pay-button">Bayar Sekarang</button>
                                         @elseif($pengajuan->status > 4)
-
-
                                             <button class="btn btn-primary" id="">Sukses</button>
-
                                         @endif
 
                                     </td>
@@ -357,7 +343,6 @@
                                                     data-bs-target="#uploadLicense">
                                                     Upload Lisensi
                                                 </button>
-
                                             @else
                                                 -
                                             @endif
@@ -369,18 +354,26 @@
 
 
                                     @if (!is_null($pengajuan->ongkir) && !is_null($pengajuan->biaya_karantina))
-                                    <td class="labelNameDetail">Biaya Pengiriman (Rp.{{$pengajuan->ongkir}})</td>
-                                    <td>:</td>
-                                    <td>
-                                        @if (!is_null($pengajuan->status_ongkir))
+                                        <td class="labelNameDetail">
+                                            Biaya Karantina
+                                            (Rp.{{ number_format($pengajuan->biaya_karantina, 0, ',', '.') }})
+                                            <br>
+                                            Biaya Pengiriman (Rp.{{ number_format($pengajuan->ongkir, 0, ',', '.') }})
+                                            <br>
+                                            Total
+                                            (Rp.{{ number_format($pengajuan->biaya_karantina + $pengajuan->ongkir, 0, ',', '.') }})
+                                        </td>
 
-                                        <button class="btn btn-primary" id="pay-ongkir-button">{{$pengajuan->status_ongkir}}</button>
-
-                                        @else
-                                       <button class="btn btn-primary" id="pay-ongkir-button">Bayar Sekarang</button>
-
-                                        @endif
-                                    </td>
+                                        <td>:</td>
+                                        <td>
+                                            @if (!is_null($pengajuan->status_ongkir))
+                                                <button class="btn btn-primary"
+                                                    id="pay-ongkir-button">{{ $pengajuan->status_ongkir }}</button>
+                                            @else
+                                                <button class="btn btn-primary" id="pay-ongkir-button">Bayar
+                                                    Sekarang</button>
+                                            @endif
+                                        </td>
                                     @endif
                                 </tr>
 
@@ -589,9 +582,7 @@
                             @php
                                 break;
                             @endphp
-
                         @elseif($key == $pengajuan->status && $key == 8)
-
                             <li class="list-timeline">
                                 <div class="body-timeline">
                                     <h1 class="titleTimeline">{{ $key + 1 }}. {{ $item }}</h1>
@@ -601,9 +592,7 @@
                                     </div>
                                 </div>
                             </li>
-
                         @elseif ($key < $pengajuan->status)
-
                             <li class="list-timeline">
                                 <div class="body-timeline">
                                     <h1 class="titleTimeline">{{ $key + 1 }}. {{ $item }}</h1>
@@ -613,9 +602,7 @@
                                     </div>
                                 </div>
                             </li>
-
                         @elseif($key == $pengajuan->status)
-
                             <li class="list-timeline">
                                 <div class="body-timeline">
                                     <h1 class="titleTimeline">{{ $key + 1 }}. {{ $item }}</h1>
@@ -625,7 +612,6 @@
                                     </div>
                                 </div>
                             </li>
-
                         @endif
                     @endforeach
 
@@ -671,8 +657,6 @@
 
 
 @section('js')
-
-
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
         crossorigin="anonymous"></script>
 
@@ -688,8 +672,8 @@
 
     @if ($pay)
         <script src="https://cdnjs.cloudflare.com/ajax/libs/noty/3.1.4/noty.min.js"
-                integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
-                crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            integrity="sha512-lOrm9FgT1LKOJRUXF3tp6QaMorJftUjowOWiDcG5GFZ/q7ukof19V0HKx/GWzXCdt9zYju3/KhBNdCLzK8b90Q=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
         <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}">
         </script>
@@ -1145,7 +1129,7 @@
 
 
 
-        @isset ($payOngkir)
+    @isset($payOngkir)
 
         <script>
             const payOngkir = document.querySelector('#pay-ongkir-button');
@@ -1590,5 +1574,4 @@
             });
         </script>
         @endif
-
-@endsection
+    @endsection

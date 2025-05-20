@@ -186,27 +186,29 @@ class UserController extends Controller
     public function cst(Request $request)
     {
 
-        try {
-            Pengajuan::where('id',$request->pengajuan)->update([
-                'transaction_time'=>$request->result['transaction_time'],
-                'payment_type'=>$request->result['payment_type'] . "-" .$request->result['bank'],
-                'payment_status_message'=>$request->result['status_message'],
-                'transaction_id'=>$request->result['transaction_id'],
-                'approval_code_payment'=>$request->result['approval_code'],
-                'jumlah_pembayaran'=>$request->result['gross_amount'],
+       try {
+            Pengajuan::where('id', $request->pengajuan)->update([
+                'transaction_time' => isset($request->result['transaction_time']) ? $request->result['transaction_time'] : null,
+                'payment_type' =>
+                    (isset($request->result['payment_type']) ? $request->result['payment_type'] : '') .
+                    '-' .
+                    (isset($request->result['bank']) ? $request->result['bank'] : ''),
+                'payment_status_message' => isset($request->result['status_message']) ? $request->result['status_message'] : null,
+                'transaction_id' => isset($request->result['transaction_id']) ? $request->result['transaction_id'] : null,
+                'approval_code_payment' => isset($request->result['approval_code']) ? $request->result['approval_code'] : null,
+                'jumlah_pembayaran' => isset($request->result['gross_amount']) ? $request->result['gross_amount'] : null,
             ]);
-
         } catch (\Throwable $th) {
-            Pengajuan::where('id',$request->pengajuan)->update([
-                'transaction_time'=>$request->result['transaction_time'],
-                'payment_type'=>$request->result['payment_type'],
-                'payment_status_message'=>$request->result['status_message'],
-                'transaction_id'=>$request->result['transaction_id'],
-                'approval_code_payment'=>$request->result['approval_code'],
-                'jumlah_pembayaran'=>$request->result['gross_amount'],
+            Pengajuan::where('id', $request->pengajuan)->update([
+                'transaction_time' => isset($request->result['transaction_time']) ? $request->result['transaction_time'] : null,
+                'payment_type' => isset($request->result['payment_type']) ? $request->result['payment_type'] : null,
+                'payment_status_message' => isset($request->result['status_message']) ? $request->result['status_message'] : null,
+                'transaction_id' => isset($request->result['transaction_id']) ? $request->result['transaction_id'] : null,
+                'approval_code_payment' => isset($request->result['approval_code']) ? $request->result['approval_code'] : null,
+                'jumlah_pembayaran' => isset($request->result['gross_amount']) ? $request->result['gross_amount'] : null,
             ]);
-
         }
+
 
         if ($request->status == "success") {
 

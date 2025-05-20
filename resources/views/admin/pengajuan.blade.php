@@ -305,6 +305,7 @@
                                 <th>Country Destination</th>
                                 <th>Recipient's Address</th>
                                 <th>Status</th>
+                                <th>Ongkir + Karantina</th>
                                 <th class="no-sort">Action</th>
                                 <th class="no-sort"></th>
                                 <th class="no-sort"></th>
@@ -357,6 +358,15 @@
 
                                         @endif
 
+                                    </td>
+
+                                     <td>
+                                        @if (!is_null($item->status_ongkir))
+                                                <button class="btn btn-primary"
+                                                    id="pay-ongkir-button">Payed</button>
+                                            @else
+                                                <button class="btn btn-danger">Not yet paid</button>
+                                            @endif
                                     </td>
 
                                     <td>
@@ -414,6 +424,7 @@
                                         @endif
 
                                     </td>
+
 
                                     <td id="act-{{ $item->id }}">
                                         @if ($item->status == 7)
