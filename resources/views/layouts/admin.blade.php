@@ -46,7 +46,7 @@
         <div id="sidebarMain">
             <div class="wrapperSidebar">
                 <div class="logoAtas">
-                    <img src="{{ url('assets/img/realize.png') }}" alt="">
+                    <img src="{{ url('assets/img/floratrade_logo.png') }}" alt="">
                 </div>
                 @yield('menu')
             </div>
