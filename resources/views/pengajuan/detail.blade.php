@@ -332,7 +332,10 @@
                                                     <a href="{{ route('downloadLicense', ['id' => $pengajuan->id]) }}"
                                                         class="btn btn-success me-2">Download Lisensi</a>
                                                 @else
-                                                    -
+                                                      <button type="button" class="btn btn-primary" data-bs-toggle="modal"
+                                                        data-bs-target="#uploadLicense">
+                                                        Upload Lisensi
+                                                    </button>
                                                 @endif
                                             @else
                                                 -
