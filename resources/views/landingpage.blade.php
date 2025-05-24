@@ -34,11 +34,11 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
-    
+
     <!--Styling LandingPage-->
     <!-- <link rel="stylesheet" href="{{ url('assets/css/landingpage.css') }}"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
-    
+
     <style>
         :where([class^="ri-"])::before { content: "\f3c2"; }
         body {
@@ -77,7 +77,7 @@
         .hero-section {
         background-size: contain;
         }
-            
+
         }
         /* Navbar Links */
         nav a {
@@ -104,8 +104,8 @@
             border-radius: 8px;
             z-index: 59;
         }
-        
-        
+
+
 
     </style>
 </head>
@@ -126,7 +126,7 @@
                 <a href="#home" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
                 <a href="#about" class="text-gray-600 hover:text-primary transition-colors">Tentang</a>
                 <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Layanan</a>
-                <a href="https://market.floratrade.my.id/" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
+                <a href="https://market.floratrade.my.id" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
                 <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
             </nav>
 
@@ -152,7 +152,7 @@
             </button>
         </div>
 
-        
+
     </header>
 
     <!-- Hero Section -->
@@ -528,7 +528,7 @@
 
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        
+
         // Mobile menu toggle
         const menuButton = document.querySelector(".ri-menu-line").parentElement;
         const nav = document.querySelector("nav");
@@ -545,7 +545,7 @@
           nav.classList.toggle("shadow-md");
         });
 
-        
+
 
 
         // Testimonial slider functionality
