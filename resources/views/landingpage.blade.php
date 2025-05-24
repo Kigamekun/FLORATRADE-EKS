@@ -126,7 +126,7 @@
                 <a href="#home" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
                 <a href="#about" class="text-gray-600 hover:text-primary transition-colors">Tentang</a>
                 <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Layanan</a>
-                <a href="#marketplace" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
+                <a href="https://market.floratrade.my.id/" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
                 <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
             </nav>
 
@@ -498,10 +498,10 @@
                 <div>
                     <h4 class="text-xl font-semibold mb-6">Our Services Excellence</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Export Documentation</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Market Access</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Best Quality</a></li>
-                        <li><a href="#" class="text-white/80 hover:text-white transition-colors">Many Destination</a></li>
+                        <li><p class="text-white/80 hover:text-white transition-colors">Export Documentation</p></li>
+                        <li><p class="text-white/80 hover:text-white transition-colors">Market Access</p></li>
+                        <li><p class="text-white/80 hover:text-white transition-colors">Best Quality</p></li>
+                        <li><p class="text-white/80 hover:text-white transition-colors">Many Destination</p></li>
                     </ul>
                 </div>
                 <!-- Newsletter -->

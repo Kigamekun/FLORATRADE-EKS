@@ -111,7 +111,7 @@
     <!-- Footer -->
     <footer class="mt-5">
         <div class="footer-content text-center">
-            © 2022 Plantsasri Indonesia
+            © 2025 Floratrade Indonesia
         </div>
     </footer>
     <!-- End Footer -->
