@@ -64,7 +64,7 @@ class UserController extends Controller
 
         }
 
-        // Mail::to(env('MAIL_ADMIN'))->send(new PengajuanMail($data));
+        Mail::to(env('MAIL_ADMIN'))->send(new PengajuanMail($data));
 
         DB::table('notifications')->insert([
             'title'=>'New Request Has Been Created',
