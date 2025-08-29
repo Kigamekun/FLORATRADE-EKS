@@ -387,7 +387,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </div>
                 <div id="wrapperMaps">
                     <div id="maps">
-                        <iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.686099579077!2d106.76789555057734!3d-6.561249565942787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b9933fc50d%3A0x155679cea3b523ae!2sCV.%20Planterindo%20Asri!5e0!3m2!1sid!2sid!4v1643991203516!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        {{-- <iframe style="width: 100%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3963.686099579077!2d106.76789555057734!3d-6.561249565942787!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b9933fc50d%3A0x155679cea3b523ae!2sCV.%20Planterindo%20Asri!5e0!3m2!1sid!2sid!4v1643991203516!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe> --}}
                     </div>
                 </div>
             </div>
@@ -605,16 +605,16 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!--End of Tawk.to Script-->
     <!--End of Tawk.to Script-->
     <!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-PD78QR1W0F"></script>
-<script>
+{{-- <script async src="https://www.googletagmanager.com/gtag/js?id=G-PD78QR1W0F"></script> --}}
+{{-- <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'G-PD78QR1W0F');
-</script>
+</script> --}}
     <!-- Google Tag Manager -->
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+{{-- <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
@@ -622,7 +622,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- End Google Tag Manager -->
     <!-- MailChimp -->
     <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/6f0416e88f41b4756ef17490d/ceabefb3b194e39094133844a.js");
-    </script>
+    </script> --}}
     <!-- End MailChimp -->
 </body>
 

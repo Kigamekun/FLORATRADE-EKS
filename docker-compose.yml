@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  app:
+    image: kigamekunnn/laravel-apptest:latest
+    container_name: laravel_app
+    restart: unless-stopped
+    networks:
+      - laravel
+
+  webserver:
+    image: kigamekunnn/laravel-nginx:latest
+    container_name: laravel_nginx
+    restart: unless-stopped
+    depends_on:
+      - app
+    networks:
+      - laravel
+
+  db:
+    image: mysql:8.0
+    restart: unless-stopped
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: laravel
+      MYSQL_PASSWORD: laravel
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - laravel
+
+networks:
+  laravel:
+
+volumes:
+  db_data:
