@@ -2,31 +2,32 @@ FROM php:8.2-fpm
 
 # Install dependencies
 RUN apt-get update && apt-get install -y \
-    build-essential \
     libpng-dev \
     libjpeg-dev \
     libfreetype6-dev \
-    locales \
     zip \
-    jpegoptim optipng pngquant gifsicle \
-    vim \
-    unzip \
     git \
+    unzip \
     curl \
-    libonig-dev \
-    libxml2-dev \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
-
-# Install Composer
-COPY --from=composer:2.6 /usr/bin/composer /usr/bin/composer
+    && docker-php-ext-install pdo pdo_mysql gd
 
 # Set working directory
 WORKDIR /var/www
 
-COPY . .
+# Copy composer
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
 
-RUN composer install --no-dev --optimize-autoloader
+# Copy project files
+COPY . /var/www
+
+# Buat .env dari .env.example kalau belum ada
 RUN cp .env.example .env || true
-RUN php artisan key:generate
+
+# Install dependencies Laravel
+RUN composer install --no-interaction --prefer-dist --optimize-autoloader
+
+# Set permission storage & bootstrap cache
+RUN chown -R www-data:www-data /var/www/storage /var/www/bootstrap/cache \
+    && chmod -R 775 /var/www/storage /var/www/bootstrap/cache
 
 CMD ["php-fpm"]
