@@ -169,49 +169,54 @@
 
 
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add plants to request</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('createTanaman') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group mb-3">
-                            <label for="Nama Indonesia" class="form-label">Name Indonesia</label>
-                            <input type="text" class="form-control" name="name_indonesia" id="name_indonesia">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label for="Nama Latin" class="form-label">Name Latin</label>
-                            <input type="text" class="form-control" name="name_latin" id="name_latin">
-                        </div>
-                        <div class="form-group">
-                            <label for="Harga" class="form-label">Price</label>
-                            <input type="number" class="form-control" name="price" id="price">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
 
-    <div class="modal fade" id="updateTanaman" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="updateTanamanLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div id="modal-content" class="modal-content">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add plants to request</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="{{ route('createTanaman') }}" method="post" id="formCreateTanaman">
+                @csrf
                 <div class="modal-body">
-                    Loading ...
+                    <div class="form-group mb-3">
+                        <label for="name_indonesia" class="form-label">Name Indonesia</label>
+                        <input type="text" class="form-control" name="name_indonesia" id="name_indonesia" required>
+                        <div class="invalid-feedback">Please enter Indonesian name.</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label for="name_latin" class="form-label">Name Latin</label>
+                        <input type="text" class="form-control" name="name_latin" id="name_latin" required>
+                        <div class="invalid-feedback">Please enter Latin name.</div>
+                    </div>
+                    <div class="form-group">
+                        <label for="price" class="form-label">Price</label>
+                        <input type="number" class="form-control only-number" name="price" id="price" required>
+                        <div class="invalid-feedback">Please enter a valid price.</div>
+                    </div>
                 </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateTanaman" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="updateTanamanLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div id="modal-content" class="modal-content">
+            <div class="modal-body">
+                Loading ...
             </div>
         </div>
     </div>
+</div>
+
 @endsection
 
 
@@ -261,29 +266,36 @@
 
 
 
-    <script>
-        $('#updateTanaman').on('shown.bs.modal', function(e) {
 
 
-            var html = `
-    <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Add plants to request</h5>
+<script>
+    // modal update isi konten
+    $('#updateTanaman').on('shown.bs.modal', function(e) {
+        var html = `
+            <div class="modal-header">
+                <h5 class="modal-title">Update Plant</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <form action="/admin/editTanaman/${$(e.relatedTarget).data('id')}" method="post">
+            <form action="/admin/editTanaman/${$(e.relatedTarget).data('id')}" method="post" id="formUpdateTanaman">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <label class="form-label" for="Nama Indonesia">Nama Indonesia</label>
-                        <input type="text" class="form-control" name="name_indonesia" id="name_indonesia" value="${$(e.relatedTarget).data('nama-indonesia')}">
+                        <label class="form-label" for="name_indonesia">Name Indonesia</label>
+                        <input type="text" class="form-control" name="name_indonesia" id="name_indonesia"
+                            value="${$(e.relatedTarget).data('nama-indonesia')}" required>
+                        <div class="invalid-feedback">Please enter Indonesian name.</div>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="Nama Latin">Nama Latin</label>
-                        <input type="text" class="form-control" name="name_latin" value="${$(e.relatedTarget).data('nama-latin')}" id="name_latin" >
+                        <label class="form-label" for="name_latin">Name Latin</label>
+                        <input type="text" class="form-control" name="name_latin" id="name_latin"
+                            value="${$(e.relatedTarget).data('nama-latin')}" required>
+                        <div class="invalid-feedback">Please enter Latin name.</div>
                     </div>
                     <div class="form-group mb-3">
-                        <label class="form-label" for="Harga">Harga</label>
-                        <input type="number" class="form-control" name="price" value="${$(e.relatedTarget).data('price')}" id="price" >
+                        <label class="form-label" for="price">Price</label>
+                        <input type="number" class="form-control only-number" name="price" id="price"
+                            value="${$(e.relatedTarget).data('price')}" required>
+                        <div class="invalid-feedback">Please enter a valid price.</div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -291,11 +303,32 @@
                     <button type="submit" class="btn btn-primary">Update</button>
                 </div>
             </form>
-`;
+        `;
+        $('#modal-content').html(html);
+    });
 
-            $('#modal-content').html(html);
+    // delegated input validation
+    $(document).on('input', '.only-number', function () {
+        let val = $(this).val();
+        if (!/^\d*$/.test(val)) {
+            $(this).addClass('is-invalid');
+        } else {
+            $(this).removeClass('is-invalid').addClass('is-valid');
+        }
+    });
 
-        })
-    </script>
-
+    // validate before submit
+    $(document).on('submit', 'form[id^="form"]', function (e) {
+        let valid = true;
+        $(this).find('input[required]').each(function () {
+            if (!$(this).val().trim()) {
+                $(this).addClass('is-invalid');
+                valid = false;
+            } else {
+                $(this).removeClass('is-invalid').addClass('is-valid');
+            }
+        });
+        if (!valid) e.preventDefault();
+    });
+</script>
 @endsection

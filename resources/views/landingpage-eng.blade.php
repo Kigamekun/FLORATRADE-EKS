@@ -56,7 +56,7 @@
             background-size: contain;
             background-position: right top;
             background-repeat: no-repeat;
-            
+
         }
     </style>
 </head>
@@ -76,7 +76,7 @@
                 <a href="#home" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
                 <a href="#about" class="text-gray-600 hover:text-primary transition-colors">About</a>
                 <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Services</a>
-                <a href="#" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
+                {{-- <a href="#" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a> --}}
                 <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Contact</a>
             </nav>
             <div class="flex items-center space-x-4">

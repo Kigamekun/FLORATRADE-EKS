@@ -178,34 +178,38 @@
 
 
 
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add Pricing List</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="{{ route('createPricing') }}" method="post">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="Count / QTY">Count / QTY</label>
-                            <input type="number" class="form-control" name="count" id="count">
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="form-label" for="Value">Value</label>
-                            <input type="number" class="form-control" name="value" id="value">
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </form>
+    <!-- Add Pricing List -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+    aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add Pricing List</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
+            <form action="{{ route('createPricing') }}" method="post" id="formAddPricing">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="count">Count / QTY</label>
+                        <input type="number" class="form-control only-number" name="count" id="count" min="1" required>
+                        <div class="invalid-feedback">Count / QTY harus lebih dari 0.</div>
+                    </div>
+                    <div class="form-group mb-3">
+                        <label class="form-label" for="value">Value</label>
+                        <input type="number" class="form-control only-number" name="value" id="value" min="1" required>
+                        <div class="invalid-feedback">Value harus lebih dari 0.</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
         </div>
     </div>
+</div>
+
 
     <div class="modal fade" id="updateTanaman" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="updateTanamanLabel" aria-hidden="true">
@@ -266,35 +270,77 @@
 
 
     <script>
-        $('#updateTanaman').on('shown.bs.modal', function(e) {
-
-
-            var html = `
+     $('#updateTanaman').on('shown.bs.modal', function(e) {
+    var html = `
     <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Edit Pricing List</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h5 class="modal-title">Edit Pricing List</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    </div>
+    <form action="/admin/editPricing/${$(e.relatedTarget).data('id')}" method="post" id="formEditPricing">
+        @csrf
+        <div class="modal-body">
+            <div class="form-group mb-3">
+                <label class="form-label" for="count">Count / QTY</label>
+                <input type="number" class="form-control only-number" name="count"
+                       id="count" min="1" required
+                       value="${$(e.relatedTarget).data('count')}">
+                <div class="invalid-feedback">Count / QTY harus lebih dari 0.</div>
             </div>
-            <form action="/admin/editPricing/${$(e.relatedTarget).data('id')}" method="post">
-                @csrf
-                <div class="modal-body">
-                    <div class="form-group mb-3">
-                        <label class="form-label" for="Count / QTY">Count / QTY</label>
-                        <input type="number" class="form-control" name="count" id="count" value="${$(e.relatedTarget).data('count')}">
-                    </div>
-                    <div class="form-group mb-3">
-                        <label class="form-label" for="Value">Value</label>
-                        <input type="number" class="form-control" name="value" value="${$(e.relatedTarget).data('value')}" id="value" >
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-            </form>
-`;
+            <div class="form-group mb-3">
+                <label class="form-label" for="value">Value</label>
+                <input type="number" class="form-control only-number" name="value"
+                       id="value" min="1" required
+                       value="${$(e.relatedTarget).data('value')}">
+                <div class="invalid-feedback">Value harus lebih dari 0.</div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </div>
+    </form>`;
 
-            $('#modal-content').html(html);
+    $('#modal-content').html(html);
+});
 
-        })
     </script>
+
+
+<script>
+    // Validasi untuk semua input number yang punya class .only-number
+$(document).on('input', '.only-number', function () {
+    let val = parseFloat($(this).val());
+    let min = parseFloat($(this).attr('min')) || 0;
+
+    if (isNaN(val) || val < min) {
+        $(this).removeClass('is-valid').addClass('is-invalid');
+    } else {
+        $(this).removeClass('is-invalid').addClass('is-valid');
+    }
+});
+
+// Validasi form Add Pricing List
+$(document).on('submit', '#formAddPricing', function (e) {
+    let valid = true;
+    let form = $(this);
+
+    form.find('input[required]').each(function () {
+        let val = parseFloat($(this).val());
+        let min = parseFloat($(this).attr('min')) || 0;
+
+        if (isNaN(val) || val < min) {
+            $(this).addClass('is-invalid');
+            valid = false;
+        } else {
+            $(this).removeClass('is-invalid').addClass('is-valid');
+        }
+    });
+
+    if (!valid) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+});
+
+</script>
 @endsection

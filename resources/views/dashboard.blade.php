@@ -7,7 +7,7 @@
     <!--Styling Index-->
     <link rel="stylesheet" href="../assets/css/request-user.css">
     <link rel="stylesheet" href="{{ url('assets/css/table.css') }}">
-    
+
 @endsection
 
 
@@ -412,13 +412,21 @@
                                                 <label for="name" class="form-label">Recipient's Name</label>
                                                 <input type="text" name="nama_penerima" id="name" class="form-control" required>
                                             </div>
-                                            <div class="input-form">
-                                                <label for="Varietas" class="form-label">Phone Number</label>
-                                                <input type="number" name="notelp_penerima" id="Varietas" class="form-control" required>
-                                            </div>
+                                          <div class="input-form">
+    <label for="notelp_penerima" class="form-label">Phone Number</label>
+    <input
+        type="number"
+        name="notelp_penerima"
+        id="notelp_penerima"
+        class="form-control only-number"
+        min="0"
+        required
+    >
+</div>
+
                                             <div class="input-form">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" name="email_penerima" id="email" class="form-control">
+                                                <input type="email" name="email_penerima" id="email" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="column">

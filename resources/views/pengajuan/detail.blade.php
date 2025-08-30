@@ -640,9 +640,9 @@
                     <div class="modal-body">
                         @if ($pengajuan->file_lisensi != '')
                             <input type="file" name="file" id="file"
-                                data-default-file="/fileLisensi/{{ $pengajuan->file_lisensi }}" class="dropify">
+                                data-default-file="/fileLisensi/{{ $pengajuan->file_lisensi }}" class="dropify" required>
                         @else
-                            <input type="file" name="file" id="file" class="dropify">
+                            <input type="file" name="file" id="file" class="dropify" required>
                         @endif
 
                     </div>

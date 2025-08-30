@@ -126,7 +126,7 @@
                 <a href="#home" class="text-gray-900 font-medium hover:text-primary transition-colors">Home</a>
                 <a href="#about" class="text-gray-600 hover:text-primary transition-colors">Tentang</a>
                 <a href="#services" class="text-gray-600 hover:text-primary transition-colors">Layanan</a>
-                <a href="https://market.floratrade.my.id" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a>
+                {{-- <a href="https://market.floratrade.my.id" class="text-gray-600 hover:text-primary transition-colors">Marketplace</a> --}}
                 <a href="#contact" class="text-gray-600 hover:text-primary transition-colors">Kontak</a>
             </nav>
 

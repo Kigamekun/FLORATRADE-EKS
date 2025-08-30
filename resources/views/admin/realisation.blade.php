@@ -256,62 +256,110 @@
         });
     </script>
 
-    <script>
-        $('#staticBackdrop').on('shown.bs.modal', function(e) {
-            var html = `
-            <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Edit Realisation</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <script>
+    $('#staticBackdrop').on('shown.bs.modal', function(e) {
+        var html = `
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Edit Realisation</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/admin/editRealisation/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data" id="formRealisation">
+            @csrf
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label for="no_sip" class="form-label">No SIP</label>
+                    <input type="text" name="no_sip" value="${$(e.relatedTarget).data('no_sip')}" class="form-control" id="no_sip" required>
+                    <div class="invalid-feedback">No SIP wajib diisi.</div>
                 </div>
-                <form action="/admin/editRealisation/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body" id="formResi${$(e.relatedTarget).data('id')}">
 
+                <div class="mb-3">
+                    <label for="no_pyhto" class="form-label">No PhytoSanitary</label>
+                    <input type="text" name="no_pyhto" value="${$(e.relatedTarget).data('no_pyhto')}" class="form-control" id="no_pyhto" required>
+                    <div class="invalid-feedback">No PhytoSanitary wajib diisi.</div>
+                </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">No SIP</label>
-                            <input type="text"   name="no_sip" value="${$(e.relatedTarget).data('no_sip')}" class="courier form-control">
+                <div class="mb-3">
+                    <label for="invoice_usd" class="form-label">Invoice USD</label>
+                    <input type="number" name="invoice_usd" value="${$(e.relatedTarget).data('invoice_usd')}" class="form-control only-number" id="invoice_usd" min="1" required>
+                    <div class="invalid-feedback">Invoice USD harus lebih dari 0.</div>
+                </div>
 
-                        </div>
+                <div class="mb-3">
+                    <label for="total_tanaman" class="form-label">Total Tanaman</label>
+                    <input type="number" name="total_tanaman" value="${$(e.relatedTarget).data('total_tanaman')}" class="form-control only-number" id="total_tanaman" min="1" required>
+                    <div class="invalid-feedback">Total Tanaman wajib diisi dan harus lebih dari 0.</div>
+                </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">NO PyhtoSanitary</label>
-                            <input type="text"   name="no_pyhto" value="${$(e.relatedTarget).data('no_pyhto')}" class="courier form-control">
+                <div class="mb-3">
+                    <label for="terealisasi" class="form-label">Terealisasi</label>
+                    <input type="number" name="terealisasi" value="${$(e.relatedTarget).data('terealisasi')}" class="form-control only-number" id="terealisasi" min="0" required>
+                    <div class="invalid-feedback">Terealisasi wajib diisi dan tidak boleh lebih besar dari Total Tanaman.</div>
+                </div>
 
-                        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Update</button>
+            </div>
+        </form>`;
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Invoice USD</label>
-                            <input type="number"   name="invoice_usd" value="${$(e.relatedTarget).data('invoice_usd')}" class="courier form-control">
+        $('#modal-content').html(html);
+    });
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Total Tanaman</label>
-                            <input type="number" name="total_tanaman" value="${$(e.relatedTarget).data('total_tanaman')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 1234567890 or JJD0099999999" required>
-                        </div>
+    // Delegated validation
+    $(document).on('submit', '#formRealisation', function(e) {
+        let valid = true;
+        let form = $(this);
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Terealisasi</label>
-                            <input type="number" name="terealisasi" value="${$(e.relatedTarget).data('terealisasi')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12345" required>
-                        </div>
-
-
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </div>
-
-                </form>`;
-
-            $('#modal-content').html(html);
-
-
+        // Cek field required
+        form.find('input[required]').each(function() {
+            if ($(this).val().trim() === '') {
+                $(this).addClass('is-invalid');
+                valid = false;
+            } else {
+                $(this).removeClass('is-invalid');
+            }
         });
-    </script>
+
+        // Cek angka tidak boleh < min
+        form.find('input[type="number"]').each(function() {
+            let val = parseFloat($(this).val());
+            let min = parseFloat($(this).attr('min')) || 0;
+            if (isNaN(val) || val < min) {
+                $(this).addClass('is-invalid');
+                valid = false;
+            }
+        });
+
+        // Cek terealisasi <= total_tanaman
+        let total = parseFloat($('#total_tanaman').val()) || 0;
+        let terealisasi = parseFloat($('#terealisasi').val()) || 0;
+        if (terealisasi > total) {
+            $('#terealisasi').addClass('is-invalid');
+            valid = false;
+        }
+
+        if (!valid) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    });
+
+
+      $(document).on('input', '.only-number', function () {
+    let val = parseFloat($(this).val());
+    let min = parseFloat($(this).attr('min')) || 0;
+
+    if (isNaN(val) || val < min) {
+        $(this).removeClass('is-valid').addClass('is-invalid');
+    } else {
+        $(this).removeClass('is-invalid').addClass('is-valid');
+    }
+});
+
+</script>
+
 
 
 @endsection

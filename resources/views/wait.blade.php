@@ -25,6 +25,14 @@
                 <img src="{{ url('assets/img/waiting-images.png') }}" alt="">
             </div>
             <p class="text">Your account is being processed, please wait a moment.</p>
+
+            <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+            @csrf
+            <button type="submit" class="btn btn-danger btn-sm">
+                Logout
+            </button>
+        </form>
+
         </div>
     </div>
 

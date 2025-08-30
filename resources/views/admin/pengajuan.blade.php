@@ -98,7 +98,6 @@
         option {
             color: black;
         }
-
     </style>
     <div class="contentMain">
         <h2 class="pageNameContent">Request</h2>
@@ -141,7 +140,6 @@
                         <tbody>
 
                             @foreach ($newData as $key => $item)
-
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
 
@@ -166,7 +164,6 @@
                                             <span class="badge bg-warning">Waiting Approve</span>
                                         @elseif ($item->status < 0)
                                             <span class="badge bg-danger">Decline</span>
-
                                         @elseif ($item->status >= 1 && $item->status <= 3)
                                             <span class="badge bg-warning">Progress ({{ $item->status }})</span>
                                         @elseif ($item->status == 4)
@@ -179,27 +176,24 @@
                                             <span class="badge bg-info">Progress ({{ $item->status }})</span>
                                         @elseif ($item->status == 8)
                                             <span class="badge bg-success">Selesai</span>
-
-
                                         @endif
 
                                     </td>
 
                                     <td>
                                         @if ($item->status == 0)
-
                                             <div class="buttonAction">
                                                 <a href="{{ route('approvePengajuan', ['id' => $item->id]) }}"
                                                     class="buttons success">
                                                     <img src="{{ url('assets/img/approveIcon.svg') }}" alt="">
                                                 </a>
-                                                <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal" class="buttons danger">
+                                                <button type="button" data-id="{{ $item->id }}"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                    class="buttons danger">
                                                     <img src="{{ url('assets/img/close_icon.svg') }}" alt="">
                                                 </button>
                                             </div>
                                         @elseif($item->status >= 1)
-
                                             @php
                                                 $status = [];
                                                 $status[0] = 'Menunggu Approval';
@@ -218,8 +212,6 @@
                                             {{-- <label for="">ubah status</label> --}}
                                             <select name="status" class="form-control" data-id="{{ $item->id }}">
                                                 @foreach ($status as $key => $st)
-
-
                                                     @if ($key == $item->status)
                                                         <option value="{{ $key }}" selected>{{ $st }}
                                                         </option>
@@ -229,14 +221,12 @@
                                                                 {{ $st }}
                                                             </option>
                                                         @else
-
                                                             <option value="{{ $key }}">{{ $st }}
                                                             </option>
                                                         @endif
                                                     @endif
                                                 @endforeach
                                             </select>
-
                                         @endif
 
                                     </td>
@@ -246,27 +236,25 @@
                                             <div class="buttonAction">
 
                                                 @if ($item->no_resi == '')
-
                                                     <button type="button" class="buttons success" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop" data-id="{{ $item->id }}"
                                                         data-file="{{ $item->file_resi }}"
                                                         data-no="{{ $item->no_resi }}">
                                                         <img width="20" height="20"
-                                                            src="{{ url('assets/img/approvalDocument.svg') }}" alt="">
+                                                            src="{{ url('assets/img/approvalDocument.svg') }}"
+                                                            alt="">
                                                     </button>
                                                 @else
-
                                                     <button type="button" class="buttons success" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop" data-id="{{ $item->id }}"
                                                         data-file="{{ $item->file_resi }}"
                                                         data-no="{{ $item->no_resi }}">
                                                         <img width="20" height="20"
-                                                            src="{{ url('assets/img/approvalDocument.svg') }}" alt="">
+                                                            src="{{ url('assets/img/approvalDocument.svg') }}"
+                                                            alt="">
                                                     </button>
-
                                                 @endif
                                             </div>
-
                                         @endif
                                     </td>
 
@@ -314,7 +302,6 @@
                         <tbody>
 
                             @foreach ($data as $key => $item)
-
                                 <tr>
                                     <td>{{ $key + 1 }}</td>
 
@@ -330,7 +317,7 @@
                                             <p class="name">{{ $item->nama_penerima }}</p>
                                             <p class="phoneNumber">
                                                 {{ $item->notelp_penerima }}
-                                                </p>
+                                            </p>
                                         </div>
                                     </td>
                                     <td>{{ $item->negara_tujuan }}</td>
@@ -341,7 +328,6 @@
                                             <span class="badge bg-warning">Waiting Approve</span>
                                         @elseif ($item->status < 0)
                                             <span class="badge bg-danger">Decline</span>
-
                                         @elseif ($item->status >= 1 && $item->status <= 3)
                                             <span class="badge bg-warning">Progress ({{ $item->status }})</span>
                                         @elseif ($item->status == 4)
@@ -354,36 +340,32 @@
                                             <span class="badge bg-info">Progress ({{ $item->status }})</span>
                                         @elseif ($item->status == 8)
                                             <span class="badge bg-success">Done</span>
-
-
                                         @endif
 
                                     </td>
 
-                                     <td>
+                                    <td>
                                         @if (!is_null($item->status_ongkir))
-                                                <button class="btn btn-primary"
-                                                    id="pay-ongkir-button">Payed</button>
-                                            @else
-                                                <button class="btn btn-danger">Not yet paid</button>
-                                            @endif
+                                            <button class="btn btn-primary" id="pay-ongkir-button">Payed</button>
+                                        @else
+                                            <button class="btn btn-danger">Not yet paid</button>
+                                        @endif
                                     </td>
 
                                     <td>
                                         @if ($item->status == 0)
-
                                             <div class="buttonAction">
                                                 <a href="{{ route('approvePengajuan', ['id' => $item->id]) }}"
                                                     class="buttons success">
                                                     <img src="{{ url('assets/img/approveIcon.svg') }}" alt="">
                                                 </a>
-                                                <button type="button" data-id="{{ $item->id }}" data-bs-toggle="modal"
-                                                    data-bs-target="#exampleModal" class="buttons danger">
+                                                <button type="button" data-id="{{ $item->id }}"
+                                                    data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                    class="buttons danger">
                                                     <img src="{{ url('assets/img/close_icon.svg') }}" alt="">
                                                 </button>
                                             </div>
                                         @elseif($item->status >= 1)
-
                                             @php
                                                 $status = [];
                                                 $status[0] = 'Waiting For Approval';
@@ -400,10 +382,9 @@
                                             @endphp
 
                                             {{-- <label for="">ubah status</label> --}}
-                                            <select name="status" class="stts form-control" data-id="{{ $item->id }}">
+                                            <select name="status" class="stts form-control"
+                                                data-id="{{ $item->id }}">
                                                 @foreach ($status as $key => $st)
-
-
                                                     @if ($key == $item->status)
                                                         <option value="{{ $key }}" selected>{{ $st }}
                                                         </option>
@@ -413,14 +394,12 @@
                                                                 {{ $st }}
                                                             </option>
                                                         @else
-
                                                             <option value="{{ $key }}">{{ $st }}
                                                             </option>
                                                         @endif
                                                     @endif
                                                 @endforeach
                                             </select>
-
                                         @endif
 
                                     </td>
@@ -431,7 +410,6 @@
                                             <div class="buttonAction">
 
                                                 @if ($item->no_resi == '')
-
                                                     <button type="button" class="buttons success" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop" data-id="{{ $item->id }}"
                                                         data-file="{{ $item->file_resi }}"
@@ -439,13 +417,13 @@
                                                         data-courier="{{ $item->courier }}"
                                                         data-no_pyhto="{{ $item->no_pyhto }}"
                                                         data-ongkir="{{ $item->ongkir }}"
-                                                         data-biaya_karantina="{{ $item->biaya_karantina }}"
+                                                        data-biaya_karantina="{{ $item->biaya_karantina }}"
                                                         data-airplane="{{ $item->airplane }}">
                                                         <img width="20" height="20"
-                                                            src="{{ url('assets/img/file-tray-outline 1.svg') }}" alt="">
+                                                            src="{{ url('assets/img/file-tray-outline 1.svg') }}"
+                                                            alt="">
                                                     </button>
                                                 @else
-
                                                     <button type="button" class="buttons success" data-bs-toggle="modal"
                                                         data-bs-target="#staticBackdrop" data-id="{{ $item->id }}"
                                                         data-file="{{ $item->file_resi }}"
@@ -453,16 +431,14 @@
                                                         data-courier="{{ $item->courier }}"
                                                         data-no_pyhto="{{ $item->no_pyhto }}"
                                                         data-ongkir="{{ $item->ongkir }}"
-                                                         data-biaya_karantina="{{ $item->biaya_karantina }}"
+                                                        data-biaya_karantina="{{ $item->biaya_karantina }}"
                                                         data-airplane="{{ $item->airplane }}">
                                                         <img width="20" height="20"
                                                             src="{{ url('assets/img/file-tray-full-outline 1.svg') }}"
                                                             alt="">
                                                     </button>
-
                                                 @endif
                                             </div>
-
                                         @endif
                                     </td>
 
@@ -555,14 +531,11 @@
             </div>
         </div>
     </div>
-
-
 @endsection
 
 
 
 @section('js')
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"
         integrity="sha512-8QFTrG0oeOiyWo/VM9Y8kgxdlCryqhIxVeRpWSezdRRAvarxVtwLnGroJgnVW9/XBRduxO/z1GblzPrMQoeuew=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -662,138 +635,108 @@
     </script>
 
     <script>
+
+
         $('#staticBackdrop').on('shown.bs.modal', function(e) {
-            if ($(e.relatedTarget).data('file') == '') {
-                var html = `
-<div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add Receipt</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+    let id = $(e.relatedTarget).data('id');
+    let courier = $(e.relatedTarget).data('courier') || '';
+    let airplane = $(e.relatedTarget).data('airplane') || '';
+    let noResi = $(e.relatedTarget).data('no') || '';
+    let noPyhto = $(e.relatedTarget).data('no_pyhto') || '';
+    let ongkir = $(e.relatedTarget).data('ongkir') || '';
+    let biayaKarantina = $(e.relatedTarget).data('biaya_karantina') || '';
+    let file = $(e.relatedTarget).data('file') || '';
+
+    let fileInput = file === ''
+        ? `<input type="file" name="file" id="file" class="dropify" required>`
+        : `<input type="file" name="file" data-default-file="/fileResi/${file}" id="file" class="dropify">`;
+
+    let html = `
+        <div class="modal-header">
+            <h5 class="modal-title" id="staticBackdropLabel">Add Receipt</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="/admin/addResi/${id}" method="post" enctype="multipart/form-data" id="formResi${id}">
+            @csrf
+            <div class="modal-body">
+
+                <div class="mb-3">
+                    <label class="form-label">Courier | On Selected (${courier})</label>
+                    <select name="courier" class="form-select" required>
+                        <option value="" selected>Select Courier</option>
+                        <option value="DHL">DHL</option>
+                        <option value="UPS">UPS</option>
+                        <option value="KARGO">KARGO</option>
+                    </select>
+                    <div class="invalid-feedback">Please select a courier.</div>
                 </div>
-                <form action="/admin/addResi/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body" id="formResi${$(e.relatedTarget).data('id')}">
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Courier | On Selected (${$(e.relatedTarget).data('courier')})</label>
-
-                            <select   name="courier" class="courier form-select" required>
-                                <option value="" selected>Select Courier</option>
-                                    <option value="DHL">DHL</option>
-                                    <option value="UPS">UPS</option>
-                                    <option value="KARGO">KARGO</option>
-                            </select>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Airplane</label>
-                            <input type="text"   name="airplane" value="${$(e.relatedTarget).data('airplane')}" class="courier form-control">
-
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Number Receipt</label>
-                            <input type="text" name="no_resi" value="${$(e.relatedTarget).data('no')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 1234567890 or JJD0099999999" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Number PhytoSanitary</label>
-                            <input type="text" name="no_pyhto" value="${$(e.relatedTarget).data('no_pyhto')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12345" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Ongkir</label>
-                            <input type="number" name="ongkir" value="${$(e.relatedTarget).data('ongkir')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12000" required>
-                        </div>
-
-
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Biaya karantina</label>
-                            <input type="number" name="biaya_karantina" value="${$(e.relatedTarget).data('biaya_karantina')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12000" required>
-                        </div>
-
-                        <input type="file" name="file" id="file" class="dropify" required>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </div>
-
-                </form>
-`;
-            } else {
-                var html = `
-<div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Add Receipt</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <div class="mb-3">
+                    <label class="form-label">Airplane</label>
+                    <input type="text" name="airplane" value="${airplane}" class="form-control">
+                    <div class="invalid-feedback">Airplane cannot be empty.</div>
                 </div>
-                <form action="/admin/addResi/${$(e.relatedTarget).data('id')}" method="post" enctype="multipart/form-data">
-                    @csrf
-                    <div class="modal-body" id="formResi${$(e.relatedTarget).data('id')}">
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Courier | On Selected (${$(e.relatedTarget).data('courier')})</label>
-                            <select   name="courier" class="courier form-select">
-                                <option value="" selected>Select Courier</option>
-                                    <option value="DHL">DHL</option>
-                                    <option value="UPS">UPS</option>
-                                    <option value="KARGO">KARGO</option>
-                            </select>
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">Number Receipt</label>
+                    <input type="text" name="no_resi" value="${noResi}" class="form-control" placeholder="Examples: 1234567890 or JJD0099999999" required>
+                    <div class="invalid-feedback">Number receipt required.</div>
+                </div>
 
+                <div class="mb-3">
+                    <label class="form-label">Number PhytoSanitary</label>
+                    <input type="text" name="no_pyhto" value="${noPyhto}" class="form-control" placeholder="Examples: 12345" required>
+                    <div class="invalid-feedback">Number PhytoSanitary required.</div>
+                </div>
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Airplane</label>
-                            <input type="text"   name="airplane" value="" class="courier form-control">
+                <div class="mb-3">
+                    <label class="form-label">Ongkir</label>
+                    <input type="number" name="ongkir" value="${ongkir}" class="form-control only-number" placeholder="Examples: 12000" required>
+                    <div class="invalid-feedback">Ongkir must be a number.</div>
+                </div>
 
-                        </div>
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Number Receipt</label>
-                            <input type="text" name="no_resi" value="${$(e.relatedTarget).data('no')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 1234567890 or JJD0099999999">
-                        </div>
+                <div class="mb-3">
+                    <label class="form-label">Biaya karantina</label>
+                    <input type="number" name="biaya_karantina" value="${biayaKarantina}" class="form-control only-number" placeholder="Examples: 12000" required>
+                    <div class="invalid-feedback">Biaya karantina must be a number.</div>
+                </div>
 
+                ${fileInput}
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Number PhytoSanitary</label>
-                            <input type="text" name="no_pyhto" value="${$(e.relatedTarget).data('no_pyhto')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12345" required>
-                        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+        </form>
+    `;
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Ongkir</label>
-                            <input type="number" name="ongkir" value="${$(e.relatedTarget).data('ongkir')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12000" required>
-                        </div>
+    $('#modal-content').html(html);
+    $('.dropify').dropify();
+});
 
-                        <div class="mb-3">
-                            <label for="exampleFormControlInput1" class="form-label">Biaya karantina</label>
-                            <input type="number" name="biaya_karantina" value="${$(e.relatedTarget).data('biaya_karantina')}" class="form-control" id="exampleFormControlInput1"
-                                placeholder="Examples: 12000" required>
-                        </div>
+// delegated validation events
+$(document).on('input', '.only-number', function () {
+    let val = $(this).val();
+    if (!/^\d*$/.test(val)) {
+        $(this).addClass('is-invalid');
+    } else {
+        $(this).removeClass('is-invalid');
+    }
+});
 
-
-                        <input type="file" name="file" data-default-file="/fileResi/${$(e.relatedTarget).data('file')}" id="file" class="dropify">
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Add</button>
-                    </div>
-
-                </form>
-`;
-            }
-
-            $('#modal-content').html(html);
-            $('.dropify').dropify();
-        });
-
-
+$(document).on('submit', 'form[id^="formResi"]', function (e) {
+    let valid = true;
+    $(this).find('input[required], select[required]').each(function () {
+        if (!$(this).val()) {
+            $(this).addClass('is-invalid');
+            valid = false;
+        } else {
+            $(this).removeClass('is-invalid');
+        }
+    });
+    if (!valid) e.preventDefault();
+});
 
 
         $('#downloadModal').on('shown.bs.modal', function(e) {
@@ -860,6 +803,4 @@
 
         });
     </script>
-
-
 @endsection

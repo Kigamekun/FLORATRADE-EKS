@@ -26,14 +26,14 @@ class CreateTokenOngkirService extends Midtrans
 
             $item[] = [
                 'id' => 1,
-                'price' =>  $this->pengajuan->ongkir,
+                'price' =>  10000,
                 'quantity' => 1,
                 'name' => "BIAYA ONGKIR",
             ];
 
             $item[] = [
                 'id' => 2,
-                'price' =>  $this->pengajuan->biaya_karantina,
+                'price' =>  2000,
                 'quantity' => 1,
                 'name' => "BIAYA KARANTINA",
             ];

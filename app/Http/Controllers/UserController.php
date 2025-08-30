@@ -447,13 +447,29 @@ class UserController extends Controller
 
     }
 
-    public function filterRequest(Request $request)
-    {
-        $data = Pengajuan::where('user_id',Auth::id())->where('date','>=',$_GET['start'])->where('date','<=',$_GET['end'])->where('status',$_GET['status'])->get();
+public function filterRequest(Request $request)
+{
+    $query = Pengajuan::where('user_id', Auth::id());
 
-
-        return view('dashboard',['data'=>$data]);
+    // handle jika start ada
+    if ($request->filled('start')) {
+        $query->where('date', '>=', $request->input('start'));
     }
+
+    // handle jika end ada
+    if ($request->filled('end')) {
+        $query->where('date', '<=', $request->input('end'));
+    }
+
+    // handle jika status ada
+    if ($request->filled('status')) {
+        $query->where('status', $request->input('status'));
+    }
+
+    $data = $query->get();
+
+    return view('dashboard', ['data' => $data]);
+}
 
     public function filterReport(Request $request)
     {
@@ -461,11 +477,22 @@ class UserController extends Controller
         return view('pengajuan.report',['data'=>$data]);
     }
 
-    public function filterRealisation(Request $request)
-    {
-        $data = Pengajuan::where('date','>=',$_GET['start'])->where('date','<=',$_GET['end'])->get();
-        return view('admin.realisation',['data'=>$data]);
-    }
+public function filterRealisation(Request $request)
+{
+    $start = $request->get('start');
+    $end   = $request->get('end');
+
+    $data = Pengajuan::when($start, function ($query, $start) {
+                    return $query->where('date', '>=', $start);
+                })
+                ->when($end, function ($query, $end) {
+                    return $query->where('date', '<=', $end);
+                })
+                ->get();
+
+    return view('admin.realisation', ['data' => $data]);
+}
+
 
     public function testKoneksi()
     {
