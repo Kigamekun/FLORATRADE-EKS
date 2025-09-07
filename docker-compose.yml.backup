@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
+    image: laravel-app
     container_name: laravel-app
     restart: unless-stopped
     working_dir: /var/www
@@ -18,10 +19,12 @@ services:
     container_name: laravel-nginx
     restart: unless-stopped
     ports:
-      - "1001:80"   # port host 1001 → nginx 80
+      - "1001:81"
+      - "1002:82"
     volumes:
-      - ./public:/var/www/public:ro
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - /Projects/FLORATRADE-EKS/public:/var/www/FLORATRADE-EKS/public
+      - /Projects/FLORATRADE-MP/public:/var/www/FLORATRADE-MP/public
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     networks:
       - laravel
 
@@ -38,6 +41,7 @@ services:
       - "3307:3306"
     volumes:
       - dbdata:/var/lib/mysql
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql:ro
     networks:
       - laravel
 
@@ -46,4 +50,3 @@ networks:
 
 volumes:
   dbdata:
-
